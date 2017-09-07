@@ -8,24 +8,24 @@
 #   ('-f', '')
 #   ('--no-dates', '')
 #   ('--no-versions', '')
-#   ('--super', 'sros2.api.dds.security.permissions')
-#   ('-o', 'sros2/sros2/api/dds/security/permissions.py')
-#   ('-s', 'sros2/sros2/api/dds/security/permissions_sub.py')
+#   ('--super', 'sros2.api.dds.xml.governance')
+#   ('-o', 'sros2/sros2/api/dds/xml/governance.py')
+#   ('-s', 'sros2/sros2/api/dds/xml/governance_sub.py')
 #
 # Command line arguments:
-#   sros2/sros2/resources/dds/security/permissions.xsd
+#   sros2/sros2/resources/dds/xml/governance.xsd
 #
 # Command line:
-#   /usr/local/bin/generateDS -f --no-dates --no-versions -o "sros2/sros2/api/dds/security/permissions.py" -s "sros2/sros2/api/dds/security/permissions_sub.py" sros2/sros2/resources/dds/security/permissions.xsd
+#   /usr/local/bin/generateDS -f --no-dates --no-versions --super="sros2.api.dds.xml.governance" -o "sros2/sros2/api/dds/xml/governance.py" -s "sros2/sros2/api/dds/xml/governance_sub.py" sros2/sros2/resources/dds/xml/governance.xsd
 #
 # Current working directory (os.getcwd()):
-#   security
+#   xml
 #
 
 import sys
 from lxml import etree as etree_
 
-import sros2.api.dds.security.permissions as supermod
+import sros2.api.dds.xml.governance as supermod
 
 def parsexml_(infile, parser=None, **kwargs):
     if parser is None:
@@ -46,39 +46,25 @@ ExternalEncoding = 'utf-8'
 #
 
 
-class PermissionsNodeSub(supermod.PermissionsNode):
-    def __init__(self, permissions=None):
-        super(PermissionsNodeSub, self).__init__(permissions, )
-supermod.PermissionsNode.subclass = PermissionsNodeSub
-# end class PermissionsNodeSub
+class DomainAccessRulesNodeSub(supermod.DomainAccessRulesNode):
+    def __init__(self, domain_access_rules=None):
+        super(DomainAccessRulesNodeSub, self).__init__(domain_access_rules, )
+supermod.DomainAccessRulesNode.subclass = DomainAccessRulesNodeSub
+# end class DomainAccessRulesNodeSub
 
 
-class PermissionsSub(supermod.Permissions):
-    def __init__(self, grant=None):
-        super(PermissionsSub, self).__init__(grant, )
-supermod.Permissions.subclass = PermissionsSub
-# end class PermissionsSub
+class DomainAccessRulesSub(supermod.DomainAccessRules):
+    def __init__(self, domain_rule=None):
+        super(DomainAccessRulesSub, self).__init__(domain_rule, )
+supermod.DomainAccessRules.subclass = DomainAccessRulesSub
+# end class DomainAccessRulesSub
 
 
-class GrantSub(supermod.Grant):
-    def __init__(self, name=None, subject_name=None, validity=None, allow_rule=None, deny_rule=None, default=None):
-        super(GrantSub, self).__init__(name, subject_name, validity, allow_rule, deny_rule, default, )
-supermod.Grant.subclass = GrantSub
-# end class GrantSub
-
-
-class ValiditySub(supermod.Validity):
-    def __init__(self, not_before=None, not_after=None):
-        super(ValiditySub, self).__init__(not_before, not_after, )
-supermod.Validity.subclass = ValiditySub
-# end class ValiditySub
-
-
-class RuleSub(supermod.Rule):
-    def __init__(self, domains=None, publish=None, subscribe=None, relay=None):
-        super(RuleSub, self).__init__(domains, publish, subscribe, relay, )
-supermod.Rule.subclass = RuleSub
-# end class RuleSub
+class DomainRuleSub(supermod.DomainRule):
+    def __init__(self, domains=None, allow_unauthenticated_participants=None, enable_join_access_control=None, discovery_protection_kind=None, liveliness_protection_kind=None, rtps_protection_kind=None, topic_access_rules=None):
+        super(DomainRuleSub, self).__init__(domains, allow_unauthenticated_participants, enable_join_access_control, discovery_protection_kind, liveliness_protection_kind, rtps_protection_kind, topic_access_rules, )
+supermod.DomainRule.subclass = DomainRuleSub
+# end class DomainRuleSub
 
 
 class DomainIdSetSub(supermod.DomainIdSet):
@@ -95,39 +81,18 @@ supermod.DomainIdRange.subclass = DomainIdRangeSub
 # end class DomainIdRangeSub
 
 
-class CriteriaSub(supermod.Criteria):
-    def __init__(self, topics=None, partitions=None, data_tags=None):
-        super(CriteriaSub, self).__init__(topics, partitions, data_tags, )
-supermod.Criteria.subclass = CriteriaSub
-# end class CriteriaSub
+class TopicAccessRulesSub(supermod.TopicAccessRules):
+    def __init__(self, topic_rule=None):
+        super(TopicAccessRulesSub, self).__init__(topic_rule, )
+supermod.TopicAccessRules.subclass = TopicAccessRulesSub
+# end class TopicAccessRulesSub
 
 
-class TopicExpressionListSub(supermod.TopicExpressionList):
-    def __init__(self, topic=None):
-        super(TopicExpressionListSub, self).__init__(topic, )
-supermod.TopicExpressionList.subclass = TopicExpressionListSub
-# end class TopicExpressionListSub
-
-
-class PartitionExpressionListSub(supermod.PartitionExpressionList):
-    def __init__(self, partition=None):
-        super(PartitionExpressionListSub, self).__init__(partition, )
-supermod.PartitionExpressionList.subclass = PartitionExpressionListSub
-# end class PartitionExpressionListSub
-
-
-class DataTagsSub(supermod.DataTags):
-    def __init__(self, tag=None):
-        super(DataTagsSub, self).__init__(tag, )
-supermod.DataTags.subclass = DataTagsSub
-# end class DataTagsSub
-
-
-class TagNameValuePairSub(supermod.TagNameValuePair):
-    def __init__(self, name=None, value=None):
-        super(TagNameValuePairSub, self).__init__(name, value, )
-supermod.TagNameValuePair.subclass = TagNameValuePairSub
-# end class TagNameValuePairSub
+class TopicRuleSub(supermod.TopicRule):
+    def __init__(self, topic_expression=None, enable_discovery_protection=None, enable_liveliness_protection=None, enable_read_access_control=None, enable_write_access_control=None, metadata_protection_kind=None, data_protection_kind=None):
+        super(TopicRuleSub, self).__init__(topic_expression, enable_discovery_protection, enable_liveliness_protection, enable_read_access_control, enable_write_access_control, metadata_protection_kind, data_protection_kind, )
+supermod.TopicRule.subclass = TopicRuleSub
+# end class TopicRuleSub
 
 
 def get_root_tag(node):
@@ -145,8 +110,8 @@ def parse(inFilename, silence=False):
     rootNode = doc.getroot()
     rootTag, rootClass = get_root_tag(rootNode)
     if rootClass is None:
-        rootTag = 'PermissionsNode'
-        rootClass = supermod.PermissionsNode
+        rootTag = 'DomainAccessRulesNode'
+        rootClass = supermod.DomainAccessRulesNode
     rootObj = rootClass.factory()
     rootObj.build(rootNode)
     # Enable Python to collect the space used by the DOM.
@@ -166,8 +131,8 @@ def parseEtree(inFilename, silence=False):
     rootNode = doc.getroot()
     rootTag, rootClass = get_root_tag(rootNode)
     if rootClass is None:
-        rootTag = 'PermissionsNode'
-        rootClass = supermod.PermissionsNode
+        rootTag = 'DomainAccessRulesNode'
+        rootClass = supermod.DomainAccessRulesNode
     rootObj = rootClass.factory()
     rootObj.build(rootNode)
     # Enable Python to collect the space used by the DOM.
@@ -191,8 +156,8 @@ def parseString(inString, silence=False):
     rootNode = doc.getroot()
     rootTag, rootClass = get_root_tag(rootNode)
     if rootClass is None:
-        rootTag = 'PermissionsNode'
-        rootClass = supermod.PermissionsNode
+        rootTag = 'DomainAccessRulesNode'
+        rootClass = supermod.DomainAccessRulesNode
     rootObj = rootClass.factory()
     rootObj.build(rootNode)
     # Enable Python to collect the space used by the DOM.
@@ -211,15 +176,15 @@ def parseLiteral(inFilename, silence=False):
     rootNode = doc.getroot()
     rootTag, rootClass = get_root_tag(rootNode)
     if rootClass is None:
-        rootTag = 'PermissionsNode'
-        rootClass = supermod.PermissionsNode
+        rootTag = 'DomainAccessRulesNode'
+        rootClass = supermod.DomainAccessRulesNode
     rootObj = rootClass.factory()
     rootObj.build(rootNode)
     # Enable Python to collect the space used by the DOM.
     doc = None
     if not silence:
-        sys.stdout.write('#from sros2.api.dds.security.permissions import *\n\n')
-        sys.stdout.write('import sros2.api.dds.security.permissions as model_\n\n')
+        sys.stdout.write('#from sros2.api.dds.xml.governance import *\n\n')
+        sys.stdout.write('import sros2.api.dds.xml.governance as model_\n\n')
         sys.stdout.write('rootObj = model_.rootClass(\n')
         rootObj.exportLiteral(sys.stdout, 0, name_=rootTag)
         sys.stdout.write(')\n')

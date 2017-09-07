@@ -18,15 +18,15 @@ import subprocess
 import pkg_resources
 import os
 
-source_lib = 'sros2.resources.dds.security'
-target_lib = 'sros2.api.dds.security'
+source_lib = 'sros2.resources.dds.xml'
+target_lib = 'sros2.api.dds.xml'
 
 governance_xsd = pkg_resources.resource_filename(
     source_lib, 'governance.xsd')
 permissions_xsd = pkg_resources.resource_filename(
     source_lib, 'permissions.xsd')
 api_dir = pkg_resources.resource_filename(
-    target_lib, '.')
+    target_lib, '')
 
 
 def generateDS(outFilename, subclassFilename, xschemaFileName, superModule):
