@@ -9,6 +9,7 @@
 #   ('-f', '')
 #   ('--no-dates', '')
 #   ('--no-versions', '')
+#   ('--super', 'sros2.api.dds.security.governance')
 #   ('-o', 'sros2/sros2/api/dds/security/governance.py')
 #   ('-s', 'sros2/sros2/api/dds/security/governance_sub.py')
 #

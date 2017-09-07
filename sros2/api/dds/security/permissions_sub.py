@@ -8,6 +8,7 @@
 #   ('-f', '')
 #   ('--no-dates', '')
 #   ('--no-versions', '')
+#   ('--super', 'sros2.api.dds.security.permissions')
 #   ('-o', 'sros2/sros2/api/dds/security/permissions.py')
 #   ('-s', 'sros2/sros2/api/dds/security/permissions_sub.py')
 #
@@ -217,8 +218,8 @@ def parseLiteral(inFilename, silence=False):
     # Enable Python to collect the space used by the DOM.
     doc = None
     if not silence:
-        sys.stdout.write('#from ??? import *\n\n')
-        sys.stdout.write('import ??? as model_\n\n')
+        sys.stdout.write('#from sros2.api.dds.security.permissions import *\n\n')
+        sys.stdout.write('import sros2.api.dds.security.permissions as model_\n\n')
         sys.stdout.write('rootObj = model_.rootClass(\n')
         rootObj.exportLiteral(sys.stdout, 0, name_=rootTag)
         sys.stdout.write(')\n')

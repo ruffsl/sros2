@@ -18,19 +18,23 @@ import subprocess
 import pkg_resources
 import os
 
+source_lib = 'sros2.resources.dds.security'
+target_lib = 'sros2.api.dds.security'
+
 governance_xsd = pkg_resources.resource_filename(
-    'sros2.resources.dds.security', 'governance.xsd')
+    source_lib, 'governance.xsd')
 permissions_xsd = pkg_resources.resource_filename(
-    'sros2.resources.dds.security', 'permissions.xsd')
+    source_lib, 'permissions.xsd')
 api_dir = pkg_resources.resource_filename(
-    'sros2.api.dds', 'security')
+    target_lib, '.')
 
 
-def generateDS(outFilename, subclassFilename, xschemaFileName):
+def generateDS(outFilename, subclassFilename, xschemaFileName, superModule):
     cmd = ['generateDS',
            '-f',  # Force overwrite of output files.
            '--no-dates',  # Do not include the current date.
            '--no-versions',
+           '--super={}'.format(superModule),
            '-o', outFilename,
            '-s', subclassFilename,
            xschemaFileName]
@@ -38,11 +42,12 @@ def generateDS(outFilename, subclassFilename, xschemaFileName):
     subprocess.call(cmd)
 
 
-for xschemaFile in [governance_xsd, permissions_xsd]:
-    xschemaFileName = xschemaFile
-    outFilename = os.path.join(api_dir, os.path.splitext(
-        os.path.basename(xschemaFile))[0] + '.py')
-    subclassFilename = os.path.join(api_dir, os.path.splitext(
-        os.path.basename(xschemaFile))[0] + '_sub' + '.py')
+for xschemaFilePath in [governance_xsd, permissions_xsd]:
+    xschemaFile = os.path.basename(xschemaFilePath)
+    xschema = os.path.splitext(xschemaFile)[0]
+    xschemaFileName = xschemaFilePath
+    outFilename = os.path.join(api_dir, xschema + '.py')
+    subclassFilename = os.path.join(api_dir, xschema + '_sub' + '.py')
+    superModule = target_lib + '.' + xschema
 
-    generateDS(outFilename, subclassFilename, xschemaFileName)
+    generateDS(outFilename, subclassFilename, xschemaFileName, superModule)

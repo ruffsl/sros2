@@ -9,6 +9,7 @@
 #   ('-f', '')
 #   ('--no-dates', '')
 #   ('--no-versions', '')
+#   ('--super', 'sros2.api.dds.security.permissions')
 #   ('-o', 'sros2/sros2/api/dds/security/permissions.py')
 #   ('-s', 'sros2/sros2/api/dds/security/permissions_sub.py')
 #
