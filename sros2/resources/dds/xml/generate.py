@@ -14,6 +14,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# This autogenerates the necessary xml parsing api from dds secureity .xsd files
+
 import subprocess
 import pkg_resources
 import os
