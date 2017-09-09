@@ -35,7 +35,7 @@ def _dump_key(key, encoding=None, format=None, encryption_algorithm=None):
     if encoding is None:
         encoding = Encoding.PEM
     if format is None:
-        format = PrivateFormat.TraditionalOpenSSL
+        format = PrivateFormat.PKCS8
     if encryption_algorithm is None:
         encryption_algorithm = serialization.NoEncryption()
     return key.private_bytes(encoding=encoding, format=format,
@@ -57,11 +57,24 @@ def load_cert(cert_path, encoding=None, backend=None):
         if encoding is Encoding.PEM:
             cert = x509.load_pem_x509_certificate(
                 data=f.read(), backend=backend)
-        if encoding is Encoding.DER:
+        elif encoding is Encoding.DER:
             cert = x509.load_der_x509_certificate(
                 data=f.read(), backend=backend)
     return cert
 
+
+def load_cert_data(cert_data, encoding=None, backend=None):
+    if encoding is None:
+        encoding = Encoding.PEM
+    if backend is None:
+        backend = default_backend()
+    if encoding is Encoding.PEM:
+        cert = x509.load_pem_x509_certificate(
+            cert_data, backend=backend)
+    elif encoding is Encoding.DER:
+        cert = x509.load_der_x509_certificate(
+            cert_data, backend=backend)
+    return cert
 
 def load_key(key_path, password=None, encoding=None, backend=None):
     if encoding is None:
@@ -73,7 +86,7 @@ def load_key(key_path, password=None, encoding=None, backend=None):
             key = serialization.load_pem_private_key(data=f.read(),
                                                      password=password,
                                                      backend=default_backend())
-        if encoding is Encoding.DER:
+        elif encoding is Encoding.DER:
             key = serialization.load_der_private_key(data=f.read(),
                                                      password=password,
                                                      backend=default_backend())
