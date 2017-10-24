@@ -23,7 +23,7 @@ file_path = "resources/governance.xml"
 out_file = "resources/governance.p7s"
 
 
-class TestCreateNode(unittest.TestCase):
+class TestPKI(unittest.TestCase):
 
     def test_load_key(self):
         key = pki.utils.load_key(key_path=key_path)

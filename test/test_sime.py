@@ -24,7 +24,7 @@ file_path = "resources/governance.xml"
 out_file = "resources/governance.p7s"
 
 
-class TestCreateNode(unittest.TestCase):
+class TestSIME(unittest.TestCase):
 
     def test_sign_file(self):
         cert = pki.utils.load_cert(cert_path=cert_path)
