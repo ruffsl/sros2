@@ -330,14 +330,6 @@ def create_permission_file(path, name, domain_id, permissions_dict):
           </topics>
         </%s>
 """ % (tag, 'rt', topic_name, tag)
-        # DCPS* is necessary for builtin data readers
-        permission_str += """\
-        <subscribe>
-          <topics>
-            <topic>DCPS*</topic>
-          </topics>
-        </subscribe>
-"""
     else:
         # no policy found: allow everything!
         permission_str += """\
@@ -359,7 +351,13 @@ def create_permission_file(path, name, domain_id, permissions_dict):
         </subscribe>
 """
 
+    # DCPS* is necessary for builtin data readers
     permission_str += """\
+      <subscribe>
+        <topics>
+          <topic>DCPS*</topic>
+        </topics>
+      </subscribe>
       </allow_rule>
       <default>DENY</default>
     </grant>

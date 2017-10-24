@@ -30,6 +30,8 @@ src/ament/ament_tools/scripts/ament.py build --build-tests --symlink-install --c
 
 Prerequisite: to use DDS-Scurity with connext you will need to procure an RTI Licence and install the security plugin.
 
+Warning: this tutorial is for Connext 5.3.0. If you use Connext 5.2.4 please refer to the [tutorial from ROS 2 Beta 3](https://github.com/ros2/sros2/blob/release-beta3/SROS2_Linux.md)
+
 The RTI Connext installer allows you to choose where it lands in the filesystem.
 These instructions assume that you have prefixed the RTI paths with `$HOME/rti` so that the latest version (5.3.0 at time of writing) will land in `$HOME/rti/rti_connext_dds-5.3.0`.
 Note that the installer is a multi-partprocess.
@@ -175,7 +177,7 @@ To do this, we will use the sample policy file provided in `examples/sample_poli
 First, we will copy this sample policy file into our keystore:
 
 ```bash
-cp ~/ros2_ws/src/ros2/sros2/examples/sample_policy.yaml ./demo_keys/
+cp ~/ros2_ws/src/ros2/sros2/examples/sample_policy.yaml ./demo_keys/policies.yaml
 ```
 
 And now we will use it to generate the XML permission files expected by the middleware:
