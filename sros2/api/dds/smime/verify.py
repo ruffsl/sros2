@@ -16,16 +16,9 @@
 # https://github.com/pyca/cryptography/issues/1621
 
 import logging
-from M2Crypto import BIO, SMIME, X509 #, m2
+from M2Crypto import BIO, SMIME, X509
 
-# import base64
-
-import cryptography
-# from cryptography.x509.oid import NameOID
-from cryptography.hazmat.backends import default_backend
-# from cryptography.hazmat.primitives import serialization, hashes
 from cryptography.hazmat.primitives.serialization import Encoding
-# from cryptography.hazmat.primitives.asymmetric import rsa, dsa, ec
 
 from sros2.api.dds import pki
 
@@ -64,7 +57,7 @@ def _load_store(cert_store, certs, source_type, source_format=None):
         msg = 'unknown source type: ' + source_type + \
             '; possible values: file, bio, pkcs11'
         logging.error(msg=msg)
-        raise BadKeyringSource(msg)
+        raise BadKeySource(msg)
 
 
 def _verify_data(data_path, certs, source_type='file', source_format='PEM'):
@@ -135,6 +128,11 @@ def verify_file(file_path, certs, source_format='PEM'):
 
     signed_certs = []
     for cert in raw_signed_certs:
-        signed_certs.append(pki.utils.load_cert_data(cert.as_pem()))
+        # FIXME importing both M2Crypto and cryptography results in flaky segfaults?
+        # the X509 function as_pem() seems to be the issue
+        # when not segfaulting, PEM cert is much too short and invalid
+        # could be an upstream issue in _verify_data
+        cert = cert.as_pem()
+        signed_certs.append(pki.utils.load_cert_data(cert))
 
     return signed_certs

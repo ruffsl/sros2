@@ -16,7 +16,7 @@
 # https://github.com/pyca/cryptography/issues/1621
 
 import logging
-from M2Crypto import BIO, SMIME, Rand
+from M2Crypto import BIO, SMIME
 
 from cryptography import hazmat, x509
 from cryptography.hazmat.primitives.serialization import Encoding
@@ -54,7 +54,6 @@ def _sign_bio(data_bio, key, cert, source_type,
     if flags is None:
         flags = SMIME.PKCS7_DETACHED
         flags |= SMIME.PKCS7_TEXT
-    Rand.load_file('randpool.dat', -1)
     try:
         if source_format == 'PEM':
             pkcs7 = smime.sign(data_bio=data_bio, flags=flags, algo=algo)
@@ -71,7 +70,6 @@ def _sign_bio(data_bio, key, cert, source_type,
     except SMIME.PKCS7_Error as e:
         logging.error(msg='pkcs7 error: ' + str(e))
         raise
-    Rand.save_file('randpool.dat')
     return pkcs7, smime
 
 

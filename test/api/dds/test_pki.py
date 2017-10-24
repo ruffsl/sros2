@@ -19,8 +19,6 @@ from sros2.api.dds import pki
 
 key_path = 'resources/key.pem'
 cert_path = 'resources/cert.pem'
-file_path = "resources/governance.xml"
-out_file = "resources/governance.p7s"
 
 
 class TestPKI(unittest.TestCase):
