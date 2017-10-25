@@ -17,8 +17,8 @@ import shutil
 import tempfile
 import unittest
 
-from sros2.api.dds import pki
-from sros2.api.dds import smime
+from sros2keystore.api.dds import pki
+from sros2keystore.api.dds import smime
 
 resources_dir = 'resources'
 key_path = os.path.join(resources_dir, 'key1.pem')

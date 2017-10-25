@@ -9,15 +9,15 @@
 #   ('-f', '')
 #   ('--no-dates', '')
 #   ('--no-versions', '')
-#   ('--super', 'sros2.api.dds.xml.governance')
-#   ('-o', 'sros2/sros2/api/dds/xml/governance.py')
-#   ('-s', 'sros2/sros2/api/dds/xml/governance_sub.py')
+#   ('--super', 'sros2keystore.api.dds.xml.governance')
+#   ('-o', 'sros2keystore/sros2keystore/api/dds/xml/governance.py')
+#   ('-s', 'sros2keystore/sros2keystore/api/dds/xml/governance_sub.py')
 #
 # Command line arguments:
-#   sros2/sros2/resources/dds/xml/governance.xsd
+#   sros2keystore/sros2keystore/resources/dds/xml/governance.xsd
 #
 # Command line:
-#   /usr/local/bin/generateDS -f --no-dates --no-versions --super="sros2.api.dds.xml.governance" -o "sros2/sros2/api/dds/xml/governance.py" -s "sros2/sros2/api/dds/xml/governance_sub.py" sros2/sros2/resources/dds/xml/governance.xsd
+#   /usr/local/bin/generateDS -f --no-dates --no-versions --super="sros2keystore.api.dds.xml.governance" -o "sros2keystore/sros2keystore/api/dds/xml/governance.py" -s "sros2keystore/sros2keystore/api/dds/xml/governance_sub.py" sros2keystore/sros2keystore/resources/dds/xml/governance.xsd
 #
 # Current working directory (os.getcwd()):
 #   xml

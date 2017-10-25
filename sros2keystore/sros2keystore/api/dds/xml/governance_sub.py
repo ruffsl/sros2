@@ -8,15 +8,15 @@
 #   ('-f', '')
 #   ('--no-dates', '')
 #   ('--no-versions', '')
-#   ('--super', 'sros2.api.dds.xml.governance')
-#   ('-o', 'sros2/sros2/api/dds/xml/governance.py')
-#   ('-s', 'sros2/sros2/api/dds/xml/governance_sub.py')
+#   ('--super', 'sros2keystore.api.dds.xml.governance')
+#   ('-o', 'sros2keystore/sros2keystore/api/dds/xml/governance.py')
+#   ('-s', 'sros2keystore/sros2keystore/api/dds/xml/governance_sub.py')
 #
 # Command line arguments:
-#   sros2/sros2/resources/dds/xml/governance.xsd
+#   sros2keystore/sros2keystore/resources/dds/xml/governance.xsd
 #
 # Command line:
-#   /usr/local/bin/generateDS -f --no-dates --no-versions --super="sros2.api.dds.xml.governance" -o "sros2/sros2/api/dds/xml/governance.py" -s "sros2/sros2/api/dds/xml/governance_sub.py" sros2/sros2/resources/dds/xml/governance.xsd
+#   /usr/local/bin/generateDS -f --no-dates --no-versions --super="sros2keystore.api.dds.xml.governance" -o "sros2keystore/sros2keystore/api/dds/xml/governance.py" -s "sros2keystore/sros2keystore/api/dds/xml/governance_sub.py" sros2keystore/sros2keystore/resources/dds/xml/governance.xsd
 #
 # Current working directory (os.getcwd()):
 #   xml
@@ -25,7 +25,7 @@
 import sys
 from lxml import etree as etree_
 
-import sros2.api.dds.xml.governance as supermod
+import sros2keystore.api.dds.xml.governance as supermod
 
 def parsexml_(infile, parser=None, **kwargs):
     if parser is None:
@@ -183,8 +183,8 @@ def parseLiteral(inFilename, silence=False):
     # Enable Python to collect the space used by the DOM.
     doc = None
     if not silence:
-        sys.stdout.write('#from sros2.api.dds.xml.governance import *\n\n')
-        sys.stdout.write('import sros2.api.dds.xml.governance as model_\n\n')
+        sys.stdout.write('#from sros2keystore.api.dds.xml.governance import *\n\n')
+        sys.stdout.write('import sros2keystore.api.dds.xml.governance as model_\n\n')
         sys.stdout.write('rootObj = model_.rootClass(\n')
         rootObj.exportLiteral(sys.stdout, 0, name_=rootTag)
         sys.stdout.write(')\n')

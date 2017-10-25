@@ -15,7 +15,7 @@
 import os
 import unittest
 
-from sros2.api.dds import pki
+from sros2keystore.api.dds import pki
 
 resources_dir = 'resources'
 key1_path = os.path.join(resources_dir, 'key1.pem')

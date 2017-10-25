@@ -21,7 +21,7 @@ from M2Crypto import BIO, SMIME
 from cryptography import hazmat, x509
 from cryptography.hazmat.primitives.serialization import Encoding
 
-from sros2.api.dds import pki
+from sros2keystore.api.dds import pki
 
 
 class BadPKCS7Format(BaseException):

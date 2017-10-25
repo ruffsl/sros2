@@ -20,8 +20,8 @@ import subprocess
 import pkg_resources
 import os
 
-source_lib = 'sros2.resources.dds.xml'
-target_lib = 'sros2.api.dds.xml'
+source_lib = 'sros2keystore.resources.dds.xml'
+target_lib = 'sros2keystore.api.dds.xml'
 
 governance_xsd = pkg_resources.resource_filename(
     source_lib, 'governance.xsd')
