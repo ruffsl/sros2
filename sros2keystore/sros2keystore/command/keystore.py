@@ -22,7 +22,7 @@ class KeystoreCommand(CommandExtension):
 
     def add_arguments(self, parser, cli_name):
         # get verb extensions and let them add their arguments
-        verb_extensions = get_verb_extensions('sros2.verb')
+        verb_extensions = get_verb_extensions('sros2keystore.verb')
         add_subparsers(parser, cli_name, '_verb', verb_extensions)
 
     def main(self, *, parser, args):

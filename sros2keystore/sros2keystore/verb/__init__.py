@@ -12,13 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-try:
-    from argcomplete.completers import FilesCompleter
-except ImportError:
-    def FilesCompleter():
-        """Import fallback class."""
-        return None
-
 from ros2cli.plugin_system import PLUGIN_SYSTEM_VERSION
 from ros2cli.plugin_system import satisfies_version
 

@@ -12,10 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from sros2.api.keystore import auto
-from sros2.verb import VerbExtension
-from sros2.verb.keystore import FilesCompleter
-# from sros2.verb.keystore import NamespaceCompleter
+from sros2keystore.api.keystore import auto
+from sros2keystore.verb import VerbExtension
+from sros2keystore.verb.keystore import FilesCompleter
+# from sros2keystore.verb.keystore import NamespaceCompleter
 
 
 class AutoVerb(VerbExtension):
