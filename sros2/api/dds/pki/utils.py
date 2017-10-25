@@ -95,5 +95,5 @@ def load_key(key_path, password=None, encoding=None, backend=None):
 
 def check_public_keys_match(keys):
     public_numbers = keys[0].public_key().public_numbers()
-    match = any(key.public_key().public_numbers() == public_numbers for key in keys)
+    match = all(key.public_key().public_numbers() == public_numbers for key in keys)
     return match
