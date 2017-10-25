@@ -18,9 +18,9 @@ import unittest
 from sros2.api.dds import pki
 
 resources_dir = 'resources'
-key_path = os.path.join(resources_dir, 'key.pem')
+key1_path = os.path.join(resources_dir, 'key1.pem')
 key2_path = os.path.join(resources_dir, 'key2.pem')
-cert_path = os.path.join(resources_dir, 'cert.pem')
+cert1_path = os.path.join(resources_dir, 'cert1.pem')
 cert2_path = os.path.join(resources_dir, 'cert2.pem')
 
 
@@ -41,14 +41,14 @@ class TestPKI(unittest.TestCase):
         return cert
 
     def test_check_public_keys_match(self):
-        key = self._test_load_key(key_path)
+        key1 = self._test_load_key(key1_path)
         key2 = self._test_load_key(key2_path)
-        cert = self._test_load_cert(cert_path)
+        cert1 = self._test_load_cert(cert1_path)
         cert2 = self._test_load_cert(cert2_path)
-        self.assertTrue(pki.utils.check_public_keys_match([key, cert]))
+        self.assertTrue(pki.utils.check_public_keys_match([key1, cert1]))
         self.assertTrue(pki.utils.check_public_keys_match([key2, cert2]))
-        self.assertFalse(pki.utils.check_public_keys_match([key, cert2]))
-        self.assertFalse(pki.utils.check_public_keys_match([key2, cert]))
+        self.assertFalse(pki.utils.check_public_keys_match([key1, cert2]))
+        self.assertFalse(pki.utils.check_public_keys_match([key2, cert1]))
 
 
 if __name__ == '__main__':

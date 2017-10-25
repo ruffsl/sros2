@@ -21,12 +21,11 @@ from sros2.api.dds import pki
 from sros2.api.dds import smime
 
 resources_dir = 'resources'
-key_path = os.path.join(resources_dir, 'key.pem')
-cert_path = os.path.join(resources_dir, 'cert.pem')
+key_path = os.path.join(resources_dir, 'key1.pem')
+cert_path = os.path.join(resources_dir, 'cert1.pem')
 file_path = os.path.join(resources_dir, 'governance.xml')
 out_file_name = 'governance.p7s'
 exp_file_path = os.path.join(resources_dir, out_file_name)
-rand_path = os.path.join(resources_dir, 'randpool.dat')
 
 
 class TestSMIME(unittest.TestCase):
