@@ -25,8 +25,10 @@ cert2_path = os.path.join(resources_dir, 'cert2.pem')
 
 
 class TestPKI(unittest.TestCase):
+    """Test PKI API."""
 
     def _test_load_key(self, path):
+        """Test load PEM key."""
         key = pki.utils.load_key(key_path=path)
         key_dump = pki.utils._dump_key(key=key)
         with open(path, 'rb') as fd:
@@ -34,6 +36,7 @@ class TestPKI(unittest.TestCase):
         return key
 
     def _test_load_cert(self, path):
+        """Test load PEM cert."""
         cert = pki.utils.load_cert(cert_path=path)
         cert_dump = pki.utils._dump_cert(cert=cert)
         with open(path, 'rb') as fd:
@@ -41,6 +44,7 @@ class TestPKI(unittest.TestCase):
         return cert
 
     def test_check_public_keys_match(self):
+        """Test public key matching."""
         key1 = self._test_load_key(key1_path)
         key2 = self._test_load_key(key2_path)
         cert1 = self._test_load_cert(cert1_path)

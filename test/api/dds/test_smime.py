@@ -29,9 +29,10 @@ exp_file_path = os.path.join(resources_dir, out_file_name)
 
 
 class TestSMIME(unittest.TestCase):
+    """Test SMIME API."""
 
     def setUp(self):
-        """Load PKI and init temporary directory"""
+        """Load PKI and init temporary directory."""
         self.cert = pki.utils.load_cert(cert_path=cert_path)
         self.key = pki.utils.load_key(key_path=key_path)
         pki.utils.check_public_keys_match([self.key, self.cert])
@@ -40,13 +41,13 @@ class TestSMIME(unittest.TestCase):
         self.test_dir = tempfile.mkdtemp()
 
     def tearDown(self):
-        """Remove temporary directory"""
+        """Remove temporary directory."""
         shutil.rmtree(self.test_dir)
 
     def test_sign_file(self):
-        """Test SMIME file siguratures"""
+        """Test SMIME file siguratures."""
         raw_file_path = os.path.join(self.test_dir, out_file_name)
-        signed_data = smime.sign.sign_file(
+        signed_data = smime.sign.sign_file(  # NOQA
             file_path=file_path,
             key=self.key, cert=self.cert,
             out_file=raw_file_path)
