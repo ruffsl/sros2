@@ -9,15 +9,15 @@
 #   ('-f', '')
 #   ('--no-dates', '')
 #   ('--no-versions', '')
-#   ('--super', 'sros2keystore.api.dds.xml.permissions')
-#   ('-o', 'sros2keystore/sros2keystore/api/dds/xml/permissions.py')
-#   ('-s', 'sros2keystore/sros2keystore/api/dds/xml/permissions_sub.py')
+#   ('--super', 'sros2keystore.utils.dds.xml.permissions')
+#   ('-o', 'sros2keystore/sros2keystore/utils/dds/xml/permissions.py')
+#   ('-s', 'sros2keystore/sros2keystore/utils/dds/xml/permissions_sub.py')
 #
 # Command line arguments:
 #   sros2keystore/sros2keystore/resources/dds/xml/permissions.xsd
 #
 # Command line:
-#   /usr/local/bin/generateDS -f --no-dates --no-versions --super="sros2keystore.api.dds.xml.permissions" -o "sros2keystore/sros2keystore/api/dds/xml/permissions.py" -s "sros2keystore/sros2keystore/api/dds/xml/permissions_sub.py" sros2keystore/sros2keystore/resources/dds/xml/permissions.xsd
+#   /usr/local/bin/generateDS -f --no-dates --no-versions --super="sros2keystore.utils.dds.xml.permissions" -o "sros2keystore/sros2keystore/utils/dds/xml/permissions.py" -s "sros2keystore/sros2keystore/utils/dds/xml/permissions_sub.py" sros2keystore/sros2keystore/resources/dds/xml/permissions.xsd
 #
 # Current working directory (os.getcwd()):
 #   xml

@@ -21,7 +21,7 @@ import pkg_resources
 import os
 
 source_lib = 'sros2keystore.resources.dds.xml'
-target_lib = 'sros2keystore.api.dds.xml'
+target_lib = 'sros2keystore.utils.dds.xml'
 
 governance_xsd = pkg_resources.resource_filename(
     source_lib, 'governance.xsd')

@@ -17,7 +17,7 @@ import shutil
 import tempfile
 import unittest
 
-from sros2keystore.api.dds import xml
+from sros2keystore.utils.dds import xml
 
 resources_dir = 'resources'
 governance_name = 'governance.xml'
