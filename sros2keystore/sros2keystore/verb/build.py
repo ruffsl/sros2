@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from sros2keystore.api.keystore import init
+from sros2keystore.api.keystore import KeyStoreManager
 from sros2keystore.verb import VerbExtension
 from sros2keystore.verb.keystore import FilesCompleter
 
@@ -23,15 +23,16 @@ class BuildVerb(VerbExtension):
     def add_arguments(self, parser, cli_name):
         """Add build arguments."""
         arg = parser.add_argument(
-            '-c', '--config',
-            help='path of inital config')
-        arg.completer = FilesCompleter()
-        arg = parser.add_argument(
             '-f', '--force',
             action='store_true',
             help='replace existing entry')
+        arg = parser.add_argument(
+            '-w', '--workspace',
+            help='path to workspace')
+        arg.completer = FilesCompleter()
 
     def main(self, *, args):
         """Call build function."""
-        success = init(args)
+        keystore_manager = KeyStoreManager()
+        success = keystore_manager.build(args)
         return 0 if success else 1

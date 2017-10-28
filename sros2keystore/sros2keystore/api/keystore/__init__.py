@@ -12,32 +12,62 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-def auto(args):
-    print('Automatically initialize, build, create, and sign keystore.')
-    print(args)
-    print("just kidding, sorry, this isn't implemented yet.")
-    return True
+import logging
 
-def build(args):
-    print('Build keystore.')
-    print(args)
-    print("just kidding, sorry, this isn't implemented yet.")
-    return True
+from sros2keystore.api import profile, storage, transport
 
-def create(args):
-    print('Create keystore entry for given namespaces.')
-    print(args)
-    print("just kidding, sorry, this isn't implemented yet.")
-    return True
 
-def init(args):
-    print('Initialize keystore.')
-    print(args)
-    print("just kidding, sorry, this isn't implemented yet.")
-    return True
+from .common import get_context, init_context
+from .common import KeyStore
 
-def sign(args):
-    print('Sign keystore entry for given namespaces.')
-    print(args)
-    print("just kidding, sorry, this isn't implemented yet.")
-    return True
+logger = logging.getLogger(__name__)
+
+
+class KeyStoreManager:
+    """Manager for KeyStore interface."""
+
+    def __init__(self):
+        """Initlise KeyStore Manager."""
+        self.profile_interface_class = profile.comarmor.ComArmorProfileInterface
+        self.storage_interface_class = storage.workspace.WorkspaceStorageInterface
+        self.transport_interface_class = transport.dds.DdsTransportInterface
+
+        self.keystore_class = KeyStore
+
+    def auto(self, args):
+        """Automatically initialize, build, create, and sign keystore."""
+        print('Automatically initialize, build, create, and sign keystore.')
+        print(args)
+        print("just kidding, sorry, this isn't implemented yet.")
+        return True
+
+    def build(self, args):
+        """Build keystore."""
+        logger.info('Building keystore workspace.')
+        ctx = get_context(workspace=args.workspace)
+
+        print('Builds keystore; regenerating and distributes governance.')
+        print(args)
+        print("just kidding, sorry, this isn't implemented yet.")
+        return True
+
+    def create(self, args):
+        """Create keystore entry for given namespaces."""
+        print('Create keystore entry for given namespaces.')
+        print(args)
+        print("just kidding, sorry, this isn't implemented yet.")
+        return True
+
+    def init(self, args):
+        """Initialize keystore workspace."""
+        logger.info('Initializing keystore workspace.')
+        ctx = init_context(workspace=args.workspace, reset=args.reset)
+
+        return True
+
+    def sign(self, args):
+        """Sign keystore entry for given namespaces."""
+        print('Sign keystore entry for given namespaces.')
+        print(args)
+        print("just kidding, sorry, this isn't implemented yet.")
+        return True

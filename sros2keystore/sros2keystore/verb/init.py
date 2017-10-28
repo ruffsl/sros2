@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from sros2keystore.api.keystore import init
+from sros2keystore.api.keystore import KeyStoreManager
 from sros2keystore.verb import VerbExtension
 from sros2keystore.verb.keystore import FilesCompleter
 
@@ -23,15 +23,16 @@ class InitVerb(VerbExtension):
     def add_arguments(self, parser, cli_name):
         """Add init arguments."""
         arg = parser.add_argument(
-            '-g', '--governance',
-            help='path of governance config')
-        arg.completer = FilesCompleter()
-        arg = parser.add_argument(
-            '-f', '--force',
+            '-r', '--reset',
             action='store_true',
-            help='replace existing entry')
+            help='reset existing workspace')
+        arg = parser.add_argument(
+            '-w', '--workspace',
+            help='path to workspace')
+        arg.completer = FilesCompleter()
 
     def main(self, *, args):
         """Call init function."""
-        success = init(args)
+        keystore_manager = KeyStoreManager()
+        success = keystore_manager.init(args)
         return 0 if success else 1

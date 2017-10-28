@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from sros2keystore.api.keystore import sign
+from sros2keystore.api.keystore import KeyStoreManager
 from sros2keystore.verb import VerbExtension
 # from sros2keystore.verb.keystore import NamespaceCompleter
 
@@ -39,5 +39,6 @@ class SignVerb(VerbExtension):
 
     def main(self, *, args):
         """Call sign function."""
-        success = sign(args)
+        keystore_manager = KeyStoreManager()
+        success = keystore_manager.sign(args)
         return 0 if success else 1
